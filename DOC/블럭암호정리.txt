@@ -1,0 +1,18 @@
+https://ko.wikipedia.org/wiki/%EB%B8%94%EB%A1%9D_%EC%95%94%ED%98%B8_%EC%9A%B4%EC%9A%A9_%EB%B0%A9%EC%8B%9D
+
+
+https://m.blog.naver.com/iter10/221123473011
+AES 암호화 방식
+블럭사이즈 128bit 만 사용  keysize:  128,192, 256bit
+
+AES 256 CBC 방식:  keysize가 256 bit이고 CBC 운용방식  블럭사이즈 : 128bit(16byte)
+                    openSLL, libcrom, crytopp :모두 128bit 블록사이즈
+
+라인달 알고리즘:  
+블록사이즈:  128(16 byte), 192( 24byte), 256(32byte)
+keysize : 128, 160, 192
+ 
+
+블럭단위 암호
+블록사이즈,운용방식 key를 통해  평문을 암호화  
+평문이 블럭사이즈의 배수가 되게 하기 위해 패딩 작업을 한다. 

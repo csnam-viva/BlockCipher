@@ -182,12 +182,21 @@ void CAESWinDemoDlg::OnBnClickedBtnEncription()
 
 	AES aes128(128); // 128  ECB mode
 	CString strPlainText;
+	CString strCipherKey;
 	int count = GetDlgItemText(IDC_EDIT_PLAINTEXT, strPlainText);
 
 	std::string str = CT2A(strPlainText); // "ABCDEFGHIJKLMNOP";
 	std::string hexStr = aes128.convertStrToHexStr(str);
 	std::string plainText = hexStr;
-	std::string cipherKey = "01020304050607080910111213141516";
+
+
+	count = GetDlgItemText(IDC_EDIT_KEY_ENC, strCipherKey);
+	if (count < 1) {
+		AfxMessageBox(_T("암호키가 입력 되지 않았습니다."));
+		return;
+	}
+	std::string cipherKey = CT2A(strCipherKey); // "01020304050607080910111213141516";
+	//std::string cipherKey = "01020304050607080910111213141516";
 
 	std::string cipherText = aes128.encryption(plainText, cipherKey, true);
 
@@ -208,11 +217,23 @@ void CAESWinDemoDlg::OnBnClickedBtnEncription()
 void CAESWinDemoDlg::OnBnClickedBtnDescription()
 {
 	CString strCipherText;
+	CString strCipherKey;
 	AES aes128(128); // 128  ECB mode
-	std::string cipherKey = "01020304050607080910111213141516";
+	//std::string cipherKey = "01020304050607080910111213141516";
 
 	int count = GetDlgItemText(IDC_EDIT_CIPHER_TEXT_DECODE, strCipherText);
+	if (count < 1) {
+		AfxMessageBox(_T("암호문이 입력 되지 않았습니다."));
+		return;
+	}
 	std::string cipherText = CT2A(strCipherText);
+
+	count = GetDlgItemText(IDC_EDIT_KEY_DECODE, strCipherKey);
+	if (count < 1) {
+		AfxMessageBox(_T("암호키가 입력 되지 않았습니다."));
+		return;
+	}
+	std::string cipherKey = CT2A(strCipherKey); // "01020304050607080910111213141516";
 
 
 	std::string origin = aes128.decryption(cipherText, cipherKey, true);
