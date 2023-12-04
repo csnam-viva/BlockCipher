@@ -1,6 +1,6 @@
 # AES 암호화/복호화 테스트
 
-<img src="./excute_test_capture.png" width= "320px" height="240px" title="Draw Sample">
+<img src="./excute_test_capture.png" width= "800px" height="300px" title="Draw Sample">
 
 * AES 128bit ECB 모드
 * 평문은 길이 자유롭게 입력 가능함.
